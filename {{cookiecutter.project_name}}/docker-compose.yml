@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: poetry run uvicorn {{ cookiecutter.project_slug }}.main:app --host {{ cookiecutter.host }} --port {{ cookiecutter.port }}
+    ports:
+      - {{ cookiecutter.port }}:{{ cookiecutter.port }}

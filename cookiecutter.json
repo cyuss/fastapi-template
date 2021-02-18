@@ -1,0 +1,10 @@
+{
+	"project_name": "legendary-avocado",
+	"project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+	"project_description": "",
+	"author": "Cyuss",
+	"app_name": "{{ cookiecutter.project_name.lower().replace('-', ' ') }}",
+	"version": "0.1.0",
+	"host": "0.0.0.0",
+	"port": "5000",
+}
