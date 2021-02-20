@@ -130,6 +130,7 @@ AVAILABLE COMMANDS
                                 Install it with `npm install -g devmoji`.
  format                         Format the source code using black.
  isort                          Sort the imports using isort.
+ mypy                           Run mypy for data type check
  reqs                           Generate a requirements.txt file.
  reqs_dev                       Generate a requirements_dev.txt file.
  run_docker                     Run the built Docker container.

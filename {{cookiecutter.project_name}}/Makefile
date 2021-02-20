@@ -31,7 +31,7 @@ update_deps: ## Update dependencies.
 start: ## Start the API locally.
 	@poetry run uvicorn $(repo_name).main:app --host 0.0.0.0 --port $(port)
 
-test: ## Launch unit tests.
+test: ## Run unit tests.
 	@poetry run pytest --disable-pytest-warnings
 	@echo "The tests pass! ✨ 🍰 ✨"
 
