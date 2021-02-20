@@ -16,7 +16,7 @@ help:
 bake: ## Init a poetry env and installing some useful packages (run this first). Install poetry with `pip install poetry`.
 	@poetry init
 	@poetry add fastapi uvicorn loguru requests
-	@poetry add --dev pytest-cov tox radon cloc black isort
+	@poetry add --dev pytest-cov tox radon cloc black isort mypy
 	@echo "Python 🐍 env set using Poetry 🎉"
 	@git init .
 	@echo "Coding time! ✨ 🚀"
@@ -64,6 +64,9 @@ check_format: ## Check what to change using black.
 
 isort: ## Sort the imports using isort.
 	@poetry run isort .
+
+mypy: ## Run mypy for data type check
+	@poetry run mypy .
 
 build_docker: ## Build a Docker container based on Dockerfile.
 	@docker image build -t $(docker_image_name):$(version) .
