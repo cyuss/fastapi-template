@@ -16,11 +16,10 @@ help:
 bake: ## Init a poetry env and installing some useful packages (run this first). Install poetry with `pip install poetry`.
 	@poetry init
 	@poetry add fastapi uvicorn loguru requests
-	@poetry add --dev pytest-cov tox
+	@poetry add --dev pytest-cov tox radon cloc black isort
 	@echo "Python 🐍 env set using Poetry 🎉"
 	@git init .
-	@echo "Git init done ✨"
-	@echo "Coding time! 🚀"
+	@echo "Coding time! ✨ 🚀"
 
 devmoji: ## Init devmoji (add emojis to commit messages). Install it with `npm install -g devmoji`.
 	@cp .git/hooks/prepare-commit-msg.sample .git/hooks/prepare-commit-msg
@@ -36,7 +35,7 @@ test: ## Launch unit tests.
 	@poetry run pytest --disable-pytest-warnings
 	@echo "The tests pass! ✨ 🍰 ✨"
 
-coverage: ## Launch coverage tests.
+coverage: ## Run coverage tests.
 	@poetry run pytest --cov=./$(repo_name) --disable-pytest-warnings
 	@echo "The tests pass! ✨ 🍰 ✨"
 
@@ -49,6 +48,22 @@ reqs: ## Generate a requirements.txt file.
 
 reqs_dev: ## Generate a requirements_dev.txt file.
 	@poetry export --dev --without-hashes -f requirements.txt -o requirements_dev.txt
+
+cloc: ## Count blank lines, comment lines, and physical lines of source code.
+	@poetry run cloc --exclude-dir .venv,.DS_Store --exclude-ext gif,pyc .
+
+code_metrics: ## Compute various metrics from the source code (code quality).
+	@poetry run radon cc mi hal . -a -na
+
+format: ## Format the source code using black.
+	@poetry run black .
+	@poetry run isort .
+
+check_format: ## Check what to change using black.
+	@poetry run black --check .
+
+isort: ## Sort the imports using isort.
+	@poetry run isort .
 
 build_docker: ## Build a Docker container based on Dockerfile.
 	@docker image build -t $(docker_image_name):$(version) .

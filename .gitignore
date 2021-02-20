@@ -1,0 +1,20 @@
+# Hidden files
+.DS_store
+
+# Ignore sensitive data
+*.csv
+*.xlsx
+
+# Sphinx documentation
+docs/_build/
+
+# mkdocs documentation
+/site
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
