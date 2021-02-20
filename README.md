@@ -5,6 +5,8 @@
 
 A projet template created by [`Cookiecutter`](https://github.com/cookiecutter/cookiecutter) to automate projects creation for REST API development.
 
+![Demo](assets/demo.gif)
+
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Project Template for Rest API](#project-template-for-rest-api)
