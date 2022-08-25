@@ -5,7 +5,7 @@ import subprocess
 from {{cookiecutter.project_slug}}.core import settings
 
 
-def test_version(test_client):
+def test_version(test_client) -> None:
     proc = subprocess.Popen(['poetry', 'version'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = proc.communicate()
     out = out.decode("utf-8").rstrip()
