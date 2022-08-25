@@ -16,10 +16,13 @@ help:
 bake: ## Init a poetry env and installing some useful packages (run this first). Install poetry with `pip install poetry`.
 	@poetry init
 	@poetry add fastapi uvicorn loguru requests
-	@poetry add --dev pytest-cov tox radon cloc black isort mypy
+	@poetry add --dev pytest-cov tox radon cloc black isort mypy fire hypothesis
 	@echo "Python 🐍 env set using Poetry 🎉"
 	@git init .
 	@echo "Coding time! ✨ 🚀"
+
+release: ## Update version and quality code rank in Makefile, pyproject.tml and README files.
+	poetry run python release.py $(v) $(q)
 
 devmoji: ## Init devmoji (add emojis to commit messages). Install it with `npm install -g devmoji`.
 	@cp .git/hooks/prepare-commit-msg.sample .git/hooks/prepare-commit-msg
@@ -43,6 +46,9 @@ tox: ## Run tox.
 	@poetry run tox
 	@echo "The tests pass! ✨ 🍰 ✨"
 
+lock: ## Generate `poetry.lock` file for dependencies.
+	@poetry lock
+
 reqs: ## Generate a requirements.txt file.
 	@poetry export --without-hashes -f requirements.txt -o requirements.txt
 
@@ -53,20 +59,20 @@ cloc: ## Count blank lines, comment lines, and physical lines of source code.
 	@poetry run cloc --exclude-dir .venv,.DS_Store --exclude-ext gif,pyc .
 
 code_metrics: ## Compute various metrics from the source code (code quality).
-	@poetry run radon cc mi hal . -a -na
+	@poetry run radon cc mi hal ./$(repo_name) -a -na -s
 
 format: ## Format the source code using black.
-	@poetry run black .
-	@poetry run isort .
+	@poetry run black $(repo_name)/
+	@poetry run isort $(repo_name)/
 
-check_format: ## Check what to change using black.
-	@poetry run black --check .
+format_check: ## Check what to change using black.
+	@poetry run black --check $(repo_name)/
 
 isort: ## Sort the imports using isort.
-	@poetry run isort .
+	@poetry run isort $(repo_name)/
 
 mypy: ## Run mypy for data type check
-	@poetry run mypy .
+	@poetry run mypy $(repo_name)/
 
 build_docker: ## Build a Docker container based on Dockerfile.
 	@docker image build -t $(docker_image_name):$(version) .
@@ -79,7 +85,7 @@ clean_docker: ## Stop and delete the container.
 	@docker rm -f $(docker_container_name)
 
 dcup: ## Build Docker compose.
-	@dcup --build
+	@docker compose up --build
 
 clean: ## Delete unwanted files.
 	@rm -rf `find . -name __pycache__`

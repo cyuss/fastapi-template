@@ -1,5 +1,7 @@
 # Hidden files
 .DS_store
+.vscode/
+~/.config/lazygit
 
 # Ignore sensitive data
 *.csv
