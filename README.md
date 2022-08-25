@@ -1,7 +1,7 @@
 # Project Template for building Rest API
-[![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg)](https://github.com/chetanraj/awesome-github-badges)
-![py_version](https://img.shields.io/badge/python-3.6_|_3.7_|_3.8-blue)
-![version](https://img.shields.io/badge/version-0.1.0-gree)
+[![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg?style=for-the-badge)](https://github.com/chetanraj/awesome-github-badges)
+![py_version](https://img.shields.io/badge/python-^3.8-blue?style=for-the-badge&logo=python&logoColor=9cf)
+![version](https://img.shields.io/badge/version-0.1.0-gree?style=for-the-badge)
 
 A projet template created by [`Cookiecutter`](https://github.com/cookiecutter/cookiecutter) to automate projects creation for REST API development.
 
@@ -9,7 +9,7 @@ A projet template created by [`Cookiecutter`](https://github.com/cookiecutter/co
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [Project Template for Rest API](#project-template-for-rest-api)
+- [Project Template for building Rest API](#project-template-for-building-rest-api)
   - [Project Structure](#project-structure)
   - [Prerequisites](#prerequisites)
     - [Cookiecutter](#cookiecutter)
@@ -37,6 +37,7 @@ First of all, we illustrate the project structure by describing each file and di
 ├── models                           # serialized ML/DL models
 ├── notebooks                        # all notebooks for data exploration
 ├── pytest.ini                       # pytest config file
+├── release.py                       # update version and quality code
 ├── README.md
 ├── tests                            # unit and ML tests
 │  ├── __init__.py
@@ -119,7 +120,6 @@ AVAILABLE COMMANDS
  bake                           Init a poetry env and installing some useful packages (run this first).
                                 Install poetry with `pip install poetry`.
  build_docker                   Build a Docker container based on Dockerfile.
- check_format                   Check what to change using black.
  clean                          Delete unwanted files.
  clean_docker                   Stop and delete the container.
  cloc                           Count blank lines, comment lines, and physical lines of source code.
@@ -129,8 +129,12 @@ AVAILABLE COMMANDS
  devmoji                        Init devmoji (add emojis to commit messages).
                                 Install it with `npm install -g devmoji`.
  format                         Format the source code using black.
+ format_check                   Check what to change using black.
  isort                          Sort the imports using isort.
+ lock                           Generate `poetry.lock` file for dependencies.
  mypy                           Run mypy for data type check
+ release                        Update version and quality code rank in Makefile, pyproject.tml 
+                                and README files.
  reqs                           Generate a requirements.txt file.
  reqs_dev                       Generate a requirements_dev.txt file.
  run_docker                     Run the built Docker container.
