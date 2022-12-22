@@ -14,15 +14,18 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf " \033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 bake: ## Init a poetry env and installing some useful packages (run this first). Install poetry with `pip install poetry`.
-	@poetry init
-	@poetry add fastapi uvicorn loguru requests
-	@poetry add --dev pytest-cov tox radon cloc black isort mypy fire hypothesis
+	@poetry add fastapi uvicorn loguru requests httpx python-dotenv
+	@poetry add --group dev pytest-cov tox radon cloc black isort mypy fire hypothesis mkdocs-material mkdocs-minify-plugin mkdocs-redirects mkdocstrings mkdocs-autorefs
 	@echo "Python 🐍 env set using Poetry 🎉"
 	@git init .
 	@echo "Coding time! ✨ 🚀"
 
 release: ## Update version and quality code rank in Makefile, pyproject.tml and README files.
 	poetry run python release.py $(v) $(q)
+
+doc: ## Generate MkDocs documentation and serve.
+	@poetry run mkdocs new .
+	@poetry run mkdocs serve
 
 devmoji: ## Init devmoji (add emojis to commit messages). Install it with `npm install -g devmoji`.
 	@cp .git/hooks/prepare-commit-msg.sample .git/hooks/prepare-commit-msg
@@ -89,6 +92,8 @@ dcup: ## Build Docker compose.
 
 clean: ## Delete unwanted files.
 	@rm -rf `find . -name __pycache__`
+	@rm -rf `find . -name .pytest_cache`
+	@rm -rf `find . -name .ipynb_checkpoints`
 	@rm -rf `find . -name .DS_Store`
 	@rm -f `find . -type f -name '*.py[co]' `
 	@rm -f `find . -type f -name '*~' `
