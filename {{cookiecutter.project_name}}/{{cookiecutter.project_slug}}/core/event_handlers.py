@@ -4,9 +4,7 @@ from typing import Callable
 
 from fastapi import FastAPI
 from loguru import logger
-
-from {{cookiecutter.project_slug}}.core import settings
-from {{cookiecutter.project_slug}}.core import setup_logger
+from {{cookiecutter.project_slug}}.core import settings, setup_logger
 
 
 def start_app_handler(app: FastAPI) -> Callable:
