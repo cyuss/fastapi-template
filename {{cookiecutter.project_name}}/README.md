@@ -55,29 +55,29 @@ First, you need to init the environment by using the command `make bake` which s
 
 ### Development workflow
 During the development workflow, you can use these following commands:
-	- `make start`: to start the API on a defined host and port, then you can access the swagger through https://{host}:{port}/docs to test the defined routes.
-	- `make test`: launch `pytest` with the defined unit tests.
-	- `make coverage`: check the tests coverage.
-	- `make build_docker`: build a docker image based on the `Dockerfile` to test the project when contained.
-	- `make run_docker`: run and access the built container.
-	- `make clean_docker`: clean and delete the docker image.
+- `make start`: to start the API on a defined host and port, then you can access the swagger through https://{host}:{port}/docs to test the defined routes.
+- `make test`: launch `pytest` with the defined unit tests.
+- `make coverage`: check the tests coverage.
+- `make build_docker`: build a docker image based on the `Dockerfile` to test the project when contained.
+- `make run_docker`: run and access the built container.
+- `make clean_docker`: clean and delete the docker image.
 
 To add a new route in the project, simply define it in `{{ cookiecutter.project_slug }}/routes`. Every route's inputs/outputs are defined in `schemas.py` file for data validation.
 
 A `core/` folder is defined to regroup all the configuration and settings related files. Globa and environment variables and centralized in `settings.py` file for simplicity and better management.
 
 If you decide to use `pip` for packages management instead of `poetry`, 2 commands are used for the switch:
-	- `make reqs`: generate a `requirements.txt` file for `pip`.
-	- `make reqs_dev`: generate a `requirements_dev.txt` for dev environment packages.
+- `make reqs`: generate a `requirements.txt` file for `pip`.
+- `make reqs_dev`: generate a `requirements_dev.txt` for dev environment packages.
 
 ### Code quality
 Few commands are defined to ensure a minimum quality code:
-	- `make format`: the most important command, it formats all the project using `black` and sorting the `import` statements.
-	- `make format_check`: preview the files and lines to format before formatting.
-	- `make isort`: sort `import` statements in every python file. this command is also called in `make format`.
-	- `make mypy`: type check in different functions/classes using `mypy`.
-	- `make cloc`: count blank lines, comment lines, and physical lines of source code.
-	- `make code_metrics`: compute various metrics from the source code.
+- `make format`: the most important command, it formats all the project using `black` and sorting the `import` statements.
+- `make format_check`: preview the files and lines to format before formatting.
+- `make isort`: sort `import` statements in every python file. this command is also called in `make format`.
+- `make mypy`: type check in different functions/classes using `mypy`.
+- `make cloc`: count blank lines, comment lines, and physical lines of source code.
+- `make code_metrics`: compute various metrics from the source code.
 
 All the packages used for ensuring a quality code are configured in the poetry configuration file, `pyproject.toml`. Every related configuration is defined by its own section.
 
@@ -98,14 +98,14 @@ Keeping the project's history is also very important to allow future improvement
 ```
 
 The release version follows the norms of [semantic versioning](https://semver.org/). Given a version number `MAJOR.MINOR.PATCH`, we increment the:
-	- MAJOR version when you make incompatible API changes,
-	- MINOR version when you add functionality in a backwards compatible manner.
-	- PATCH version when you make backwards compatible bug fixes.
+- MAJOR version when you make incompatible API changes,
+- MINOR version when you add functionality in a backwards compatible manner.
+- PATCH version when you make backwards compatible bug fixes.
 
 **Important:** The version variable must be kept updated in three different files:
-	- `README` file, where a badge version is used,
-	- `Makefile`, where the version is used as a variable,
-	- `pyproject.toml`, a project's version is kept in poetry configuration file.
+- `README` file, where a badge version is used,
+- `Makefile`, where the version is used as a variable,
+- `pyproject.toml`, a project's version is kept in poetry configuration file.
 
 Some useful functions are used to keep these three files' version updated using `release.py` script, a command is defined using `make release {version} {code quality}`.
 
