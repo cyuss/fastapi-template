@@ -9,9 +9,9 @@ from {{cookiecutter.project_slug}}.core import settings
 
 
 @pytest.mark.api
-def test_version(test_client: TestClient) -> None:
-    """Test the application defined in settings class
-    compared to the version number defined by Poetry.
+def test_version() -> None:
+    """Test the application's version defined in settings 
+    class compared to the version number defined by Poetry.
 
     Parameters
     ----------

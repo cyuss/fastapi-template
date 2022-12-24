@@ -128,6 +128,7 @@ AVAILABLE COMMANDS
  dcup                           Build Docker compose.
  devmoji                        Init devmoji (add emojis to commit messages).
                                 Install it with `npm install -g devmoji`.
+ doc							              Generate MkDocs documentation and serve.
  format                         Format the source code using black.
  format_check                   Check what to change using black.
  isort                          Sort the imports using isort.

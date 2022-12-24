@@ -15,7 +15,10 @@ help:
 
 bake: ## Init a poetry env and installing some useful packages (run this first). Install poetry with `pip install poetry`.
 	@poetry add fastapi uvicorn loguru requests httpx python-dotenv
-	@poetry add --group dev pytest-cov tox radon cloc black isort mypy fire hypothesis mkdocs-material mkdocs-minify-plugin mkdocs-redirects mkdocstrings mkdocs-autorefs
+	@echo "Installing dev dependencies."
+	@poetry add --group dev pytest-cov radon cloc black isort mypy fire hypothesis
+	@echo "Installing documentation dependencies."
+	@poetry add --group dev mkdocs-material mkdocs-minify-plugin mkdocs-redirects mkdocstrings mkdocs-autorefs
 	@echo "Python 🐍 env set using Poetry 🎉"
 	@git init .
 	@echo "Coding time! ✨ 🚀"
@@ -43,10 +46,6 @@ test: ## Run unit tests.
 
 coverage: ## Run coverage tests.
 	@poetry run pytest --cov=./$(repo_name) --disable-pytest-warnings
-	@echo "The tests pass! ✨ 🍰 ✨"
-
-tox: ## Run tox.
-	@poetry run tox
 	@echo "The tests pass! ✨ 🍰 ✨"
 
 lock: ## Generate `poetry.lock` file for dependencies.

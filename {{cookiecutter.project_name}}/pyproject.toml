@@ -12,7 +12,8 @@ python = "^3.9"
 minversion = "6.0"
 testpaths = ["tests/"]
 markers = [
-    "api: Web service related tests."
+    "api: Web service related tests.",
+    "ml: Machine Learning related tests."
 ]
 
 [tool.black]

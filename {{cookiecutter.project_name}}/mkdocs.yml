@@ -3,7 +3,6 @@ repo_name: ''
 repo_url: ''
 nav:
   - Home: 'index.md'
-  - Changelog: '../changelog.md'
 # extra:
 #   social:
 #     - icon: brands/github-alt
@@ -21,8 +20,8 @@ theme:
   #   logo: textsms
 plugins:
   - search
-  - mkdocstrings
-  - autorefs
+  # - mkdocstrings
+  # - autorefs
   - minify:
       minify_html: true
   # - git-revision-date-localized
