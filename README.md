@@ -128,7 +128,7 @@ AVAILABLE COMMANDS
  dcup                           Build Docker compose.
  devmoji                        Init devmoji (add emojis to commit messages).
                                 Install it with `npm install -g devmoji`.
- doc							              Generate MkDocs documentation and serve.
+ doc                            Generate MkDocs documentation and serve.
  format                         Format the source code using black.
  format_check                   Check what to change using black.
  isort                          Sort the imports using isort.
@@ -141,7 +141,6 @@ AVAILABLE COMMANDS
  run_docker                     Run the built Docker container.
  start                          Start the API locally.
  test                           Run unit tests.
- tox                            Run tox.
  update_deps                    Update dependencies.
 ```
 
