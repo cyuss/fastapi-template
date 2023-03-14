@@ -1,3 +1,18 @@
+[project]
+name = "{{ cookiecutter.project_slug }}"
+version = "{{ cookiecutter.version }}"
+description = "{{ cookiecutter.project_description }}"
+readme = "README.md"
+licence = "MIT"
+authors = ["{{ cookiecutter.author }}"]
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License"
+]
+
 [tool.poetry]
 name = "{{ cookiecutter.project_slug }}"
 version = "{{ cookiecutter.version }}"
@@ -13,23 +28,61 @@ minversion = "6.0"
 testpaths = ["tests/"]
 markers = [
     "api: Web service related tests.",
-    "ml: Machine Learning related tests."
+    "ml: Machine Learning related tests.",
+    "data: Data related tests."
 ]
 
 [tool.black]
-line-length = 120
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "C", "B", "I001"]
+ignore = [
+    "B008", # do not perform function calls in argument defaults
+    "C901", # too complex
+    "E501", # line too long, handled by black
+]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.ruff.pydocstyle]
+convention = "numpy"
 
 [tool.isort]
 profile = "black"
 src_paths = ["isort"]
 lines_after_imports = 2
 multi_line_output = 3
-max-line-length = 120
-skip = [".gitignore", ".dockerignore"]
+skip = [".gitignore", ".dockerignore", ".venv", "^.*"]
 extend_skip = [".md", ".json"]
 skip_glob = ["docs/*"]
 use_parentheses = true
-extend-ignore = "E203"
+
+[tool.coverage.run]
+parallel = true
 
 [tool.mypy]
 check_untyped_defs = true
