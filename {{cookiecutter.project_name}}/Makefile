@@ -16,9 +16,10 @@ help:
 bake: ## Init a poetry env and installing some useful packages (run this first). Install poetry with `pip install poetry`.
 	@poetry add fastapi uvicorn loguru requests httpx python-dotenv
 	@echo "Installing dev dependencies."
-	@poetry add --group dev pytest-cov radon cloc black isort mypy fire hypothesis
+	@poetry add --group test pytest-cov hypothesis pyinstrument
+	@poetry add --group dev radon cloc black isort mypy fire ruff
 	@echo "Installing documentation dependencies."
-	@poetry add --group dev mkdocs-material mkdocs-minify-plugin mkdocs-redirects mkdocstrings mkdocs-autorefs
+	@poetry add --group docs mkdocs-material mkdocs-minify-plugin mkdocs-redirects mkdocstrings mkdocs-autorefs
 	@echo "Python 🐍 env set using Poetry 🎉"
 	@git init .
 	@echo "Coding time! ✨ 🚀"
