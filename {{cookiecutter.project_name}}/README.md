@@ -4,7 +4,7 @@
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [{{cookiecutter.project_name}}](#cookiecutter.project_name)
+- [{{cookiecutter.project\_name}}](#cookiecutterproject_name)
 	- [Context](#context)
 	- [Get started](#get-started)
 		- [Init the project](#init-the-project)
@@ -40,12 +40,12 @@ AVAILABLE COMMANDS
  format                         Format the source code using black.
  format_check                   Check what to change using black.
  isort                          Sort the imports using isort.
+ lint                           Lint the source code using Ruff.
  lock                           Generate `poetry.lock` file for dependencies.
  mypy                           Run mypy for data type check
  release                        Update version and quality code rank in Makefile, pyproject.tml 
                                 and README files.
  reqs                           Generate a requirements.txt file.
- reqs_dev                       Generate a requirements_dev.txt file.
  run_docker                     Run the built Docker container.
  start                          Start the API locally.
  test                           Run unit tests.
